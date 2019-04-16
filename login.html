@@ -1,0 +1,36 @@
+<html>
+
+<head>
+        <link rel="stylesheet" type="text/css" href="css/login.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        <title> Divergent Development Panel</title>
+</head>
+
+<body>
+        <div style="text-align: center;">
+                <form>
+                        <div class="imgcontainer">
+                          <img src="assets/logo.png"  class="avatar">
+                        </div>
+                      
+                        <div class="container">
+                          <label for="uname"><b>Username</b></label>
+                          <input type="text" placeholder="Enter Username" name="uname" id="uname" required>
+                          <label for="psw"><b>Password</b></label>
+                          <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+                          <br><br>
+                        </div>
+                </form>
+                <button id="login" type="submit">Login</button>
+                <script>
+                        
+                login.addEventListener('click', function () {
+                        var renderer = require('./renderer');
+                        renderer.login();
+                });
+                </script>
+  
+        </div>
+        
+</body>
+</html>
