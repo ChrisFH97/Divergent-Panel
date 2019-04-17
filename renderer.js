@@ -2,6 +2,10 @@
 
 module.exports = {
  login : function(){
+
+        document.getElementById("errors").style.color = "limegreen";
+        document.getElementById("errors").innerHTML = "Attempting login..";
+
         var user = document.getElementById("uname").value
         var password = document.getElementById("psw").value
         var params = {Username: user,Password: password};
@@ -16,7 +20,8 @@ module.exports = {
         xhr.addEventListener("readystatechange", function () {
           if (this.readyState === 4) {
               if(this.responseText == "No rows"){
-                  alert("Username or Password missing");
+                  document.getElementById("errors").style.color = "red";
+                  document.getElementById("errors").innerHTML = "Missing fields detected";
               }else{
                 var json = JSON.parse(this.responseText);
                 switch(json.Response){
@@ -25,11 +30,13 @@ module.exports = {
                     break;
 
                     case "Invalid Request":
-                    alert("Something went wrong with you're request.\nPlease try again.");
+                    document.getElementById("errors").style.color = "red";
+                    document.getElementById("errors").innerHTML = "Something went wrong with you're request.\nPlease try again.";
                     break;
 
                     case "Invalid login credentials":
-                    alert("Login credentials invalid.");
+                    document.getElementById("errors").style.color = "red";
+                    document.getElementById("errors").innerHTML = "Invalid username or password";
                     break;
                 }
               }
