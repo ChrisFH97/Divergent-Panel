@@ -1,4 +1,4 @@
-
+const fs = require('fs');
 
 module.exports = {
  login : function(){
@@ -26,6 +26,15 @@ module.exports = {
                 var json = JSON.parse(this.responseText);
                 switch(json.Response){
                     case "Success":
+                    var key = json.Key;
+
+                    var content = key;
+                    var encoding = "utf8";
+                    
+                    fs.writeFile('.key.dd', content, encoding, (err) => {
+                        if (err) throw err;
+                    });
+
                     window.location.href = "index.html";
                     break;
 
@@ -49,5 +58,38 @@ module.exports = {
  
         xhr.send(data);
 
+ },fill : function(){
+    var data = null;
+
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+    
+    xhr.addEventListener("readystatechange", function () {
+      if (this.readyState === 4) {
+        var arr = JSON.parse(this.responseText);
+        console.log(arr);
+        for(var i = 0; i < arr.length; i++){
+            var title = arr[i].Title;
+            var finish = arr[i]["Expected-Finish"];
+            var status = arr[i].Status;
+           
+            var table = document.getElementById("projects");
+            var row = table.insertRow(1);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            cell1.innerHTML = title;
+            cell2.innerHTML = finish;
+            cell3.innerHTML = status;
+            cell4.innerHTML = "<button class=\"button button3\">View</button>";
+        }
+      }
+    });
+    
+    xhr.open("GET", "http://diversitydevelopment.net/divergentdev/API/GetProject.php?token=e5555a48-1ac9-4f99-a817-17739e026156&id=0");
+    xhr.setRequestHeader("Cache-Control", "no-cache");
+    
+    xhr.send(data);
  }
 };

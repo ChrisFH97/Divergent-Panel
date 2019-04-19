@@ -1,12 +1,10 @@
-// Modules to control application life and create native browser window
 const {app, BrowserWindow} = require('electron')
+const fs = require('fs');
+const hidefile = require('hidefile');
 
-// Keep a global reference of the window object, if you don't, the window will
-// be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
 
 function createWindow () {
-  // Create the browser window.
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
@@ -16,6 +14,17 @@ function createWindow () {
       nodeIntegration: true
     }
   })
+
+  var content = "";
+  var encoding = "utf8";
+  
+  fs.writeFile('key.dd', content, encoding, (err) => {
+      if (err) throw err;
+  });
+
+  hidefile.hide("key.dd", function(err, newpath) {
+    if (err == null) console.log(newpath);  //-> "path/to/.file.ext"
+  });
 
   // and load the index.html of the app.
   mainWindow.loadFile('login.html')

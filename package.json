@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/CHAIG200/Divergent-Panel#readme",
   "dependencies": {
-    "electron": "^4.1.4"
+    "electron": "^4.1.4",
+    "fs": "0.0.1-security",
+    "hidefile": "^2.0.0"
   }
 }
