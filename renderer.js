@@ -92,22 +92,6 @@ module.exports = {
     
     xhr.send(data);
  }, projects : function(){
-     /*                 <div class="w3-card-4" style="width:25%;margin-left: 15px;">
-                        <header class="w3-container w3-red">
-                          <h1>Header</h1>
-                        </header>
-                    
-                        <div class="w3-container">
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                        </div>
-                    
-                        <footer class="w3-container w3-red">
-                          <h5>Footer</h5>
-                        </footer>
-                </div>
-      * 
-     */
-
     var data = null;
 
     var xhr = new XMLHttpRequest();
@@ -126,7 +110,7 @@ module.exports = {
 
             var card =  document.createElement("div");
             card.className = "w3-card-4";
-            card.style ="width:25%;margin-left: 15px;margin-top: 15px; ";
+            card.style ="width:30%;margin-left: 15px;margin-top: 15px; ";
             
 
             var header = document.createElement("header");
@@ -143,10 +127,14 @@ module.exports = {
             paragraph.style = "color:white;"
 
             var footer = document.createElement("footer");
-            footer.className = "w3-container w3-red";
-            var button = document.createElement("button");
-            button.onclick = "viewProject.html?id=" + id;
+            footer.className = "w3-container w3-white";
+            footer.style = "text-align: center;text-decoration: none;";
+            var button = document.createElement("a");
+            
+            button.href = "viewProject.html?id=" + id;
+            
             button.innerText = "View Project";
+            button.style = "text-decoration:none;"
 
             var br = document.createElement("br");
 
@@ -158,10 +146,6 @@ module.exports = {
             card.appendChild(footer);
             projects.appendChild(card);
             projects.appendChild(br);
-
-
-
-
 
         }
       }

@@ -6,7 +6,7 @@ let mainWindow
 
 function createWindow () {
   mainWindow = new BrowserWindow({
-    width: 800,
+    width: 949,
     height: 600,
     minHeight: 305,
     minWidth: 628,
@@ -18,11 +18,11 @@ function createWindow () {
   var content = "";
   var encoding = "utf8";
   
-  fs.writeFile('key.dd', content, encoding, (err) => {
+  fs.writeFile('.key.dd', content, encoding, (err) => {
       if (err) throw err;
   });
 
-  hidefile.hide("key.dd", function(err, newpath) {
+  hidefile.hide(".key.dd", function(err, newpath) {
     if (err == null) console.log(newpath);  //-> "path/to/.file.ext"
   });
 
